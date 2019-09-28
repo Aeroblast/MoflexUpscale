@@ -2,3 +2,7 @@ LibMobiclip/*
 bin
 obj
 *.moflex
+.vs*
+output*
+ffmpeg*
+*.mkv

@@ -5,6 +5,7 @@ using System.IO;
 using LibMobiclip.Containers.Moflex;
 using LibMobiclip.Codec;
 using System.Drawing;
+using System.Drawing.Imaging;
 using LibMobiclip.Codec.Mobiclip;
 using LibMobiclip.Containers.Mods;
 using LibMobiclip.Codec.Sx;
@@ -41,10 +42,10 @@ class Moflex
                 decoder.Data = Data;
                 decoder.Offset = 0;
                 Bitmap b = decoder.DecodeFrame();
-                b.Save(outDir + "frame" + NumToNo(frameCount, 8) + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                b.Save(outDir + "frame" + NumToNo(frameCount, 8) + ".png", ImageFormat.Png);
                 frameCount++;
                 finalFps = (double)((MoLiveStreamVideo)Chunk).FpsRate / ((double)((MoLiveStreamVideo)Chunk).FpsScale);
-                Console.WriteLine(finalFps);
+                
             }
             else if (Chunk is MoLiveStreamAudio)
             {
@@ -167,6 +168,7 @@ class Moflex
         }
         stream.Close();
         fps=finalFps;
+        Console.WriteLine("FPS:"+finalFps);
 
     }
     private static byte[] InterleaveChannels(params Int16[][] Channels)
