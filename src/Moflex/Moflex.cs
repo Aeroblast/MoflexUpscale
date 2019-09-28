@@ -42,7 +42,7 @@ class Moflex
                 decoder.Data = Data;
                 decoder.Offset = 0;
                 Bitmap b = decoder.DecodeFrame();
-                b.Save(outDir + "frame" + NumToNo(frameCount, 8) + ".png", ImageFormat.Png);
+                b.Save(outDir + "frame" + Util.NumToNo(frameCount, 8) + ".png", ImageFormat.Png);
                 frameCount++;
                 finalFps = (double)((MoLiveStreamVideo)Chunk).FpsRate / ((double)((MoLiveStreamVideo)Chunk).FpsScale);
                 
@@ -185,11 +185,4 @@ class Moflex
         }
         return Result;
     }
-    static string NumToNo(int i, int n)
-    {
-        string r = i.ToString();
-        for (int j = n - r.Length; j > 0; j--) r = "0" + r;
-        return r;
-    }
-
 }

@@ -30,16 +30,10 @@ class Proc3DFrame
         int i = 0;
         for (; i*2 < imgs.Count;i++) 
         {
-            string o = Path.Combine(dst,"3dframe"+NumToNo(i,8)+".png");
+            string o = Path.Combine(dst,"3dframe"+Util.NumToNo(i,8)+".png");
             Merge(imgs[2*i],imgs[2*i+1],o);
         }
     
-    }
-    static string NumToNo(int i, int n)
-    {
-        string r = i.ToString();
-        for (int j = n - r.Length; j > 0; j--) r = "0" + r;
-        return r;
     }
 }
 
